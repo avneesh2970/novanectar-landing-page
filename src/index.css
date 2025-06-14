@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+
+.grid-background {
+  margin-top: -1rem;
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='175' height='175' fill='none' stroke='rgba(0,0,0,0.2)' stroke-width='0.2'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3Ccircle cx='31.5' cy='0.5' r='0.5' fill='%23777777' /%3E%3C/svg%3E");
+}
+
+.grid-hover-layer {
+  margin-top: -1rem;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='175' height='175' fill='none' stroke='%231E90FF' stroke-width='0.5'%3E%3Cdefs%3E%3Cfilter id='blur-effect' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='2' /%3E%3CfeBlend in='SourceGraphic' in2='blur-effect' mode='hard-light' /%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23blur-effect)'%3E%3Cpath d='M0 .5H31.5V32' /%3E%3Ccircle cx='31.5' cy='0.5' r='0.5' fill='%231E90FF' /%3E%3C/g%3E%3C/svg%3E");
+}
+
+
+/* Add the scroll animation keyframes */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+/* Add hover shake animation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+.hover-shake:hover {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Custom styles */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
