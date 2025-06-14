@@ -8,10 +8,8 @@ export const logPageView = () => {
   ReactGA.send({ hitType: "pageview", page: window.location.pathname });
 };
 
-export const logButtonClick = (buttonName) => {
-  ReactGA.event({
-    category: "User",
-    action: "Click",
-    label: buttonName,
+export const logContactFormSubmission  = (buttonName) => {
+  ReactGA.event("contact_form_submitted", {
+    button_name: buttonName,
   });
 };

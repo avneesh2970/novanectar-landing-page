@@ -7,7 +7,7 @@ import { X } from "lucide-react";
 import toast from "react-hot-toast";
 import { AnimatedInput } from "./AnimatedInput";
 import { useNavigate } from "react-router-dom";
-import { logButtonClick } from "../../analytics";
+import { logContactFormSubmission } from "../../analytics";
 
 export function ContactPopup({ isOpen, onClose }) {
   const {
@@ -34,7 +34,7 @@ export function ContactPopup({ isOpen, onClose }) {
   }, [isOpen]);
 
   const onSubmit = async (data) => {
-    logButtonClick("contact form submission click");
+    logContactFormSubmission("Contact Form Submit");
     setIsSubmitting(true);
     try {
       toast.success("Form Submitted Successfully");
