@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MoveUpRight } from "lucide-react";
 import { ContactPopup } from "../components/contact/ContactPopup";
 import { useState } from "react";
+import { logServicesButtonClick } from "../analytics";
 
 export default function ServiceCard({ id, title, description, icon, image }) {
   const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
@@ -27,14 +28,6 @@ export default function ServiceCard({ id, title, description, icon, image }) {
           />
           <div className="absolute inset-0 transition-opacity duration-300 group-hover:bg-opacity-30" />
         </div>
-        {/* <div className="flex items-center justify-center w-20 sm:w-24 h-20 sm:h-24 mx-auto -mt-10 sm:-mt-12 relative z-10">
-          <img
-            src={icon || "/placeholder.svg"}
-            alt="smart it solution"
-            className="w-full h-full transition-transform duration-300 group-hover:scale-110 border-4 sm:border-6 border-blue-300 rounded-full bg-white"
-            loading="lazy"
-          />
-        </div> */}
         <div className="px-4 pt-2">
           <div>
             <h3 className="mt-4text-xl sm:text-2xl text-gray-800 group-hover:text-blue-500 transition-colors duration-300 font-medium">
@@ -59,6 +52,7 @@ export default function ServiceCard({ id, title, description, icon, image }) {
                 onClick={(e) => {
                   e.preventDefault();
                   toggleContactPopup();
+                  logServicesButtonClick(id || "service page button click");
                 }}
                 className="p-3 px-6 border-2 border-blue-500 rounded-xl text-blue-500 font-semibold tracking-wide transition-colors duration-300"
               >

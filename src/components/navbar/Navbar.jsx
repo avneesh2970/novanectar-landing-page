@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { gsap } from "gsap";
 import HamburgerIcon from "./Hamburger";
 import { ContactPopup } from "../contact/ContactPopup";
+import { logContactButtonClick } from "../../analytics";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -144,6 +145,7 @@ export default function Navbar() {
                 e.preventDefault();
                 toggleMenu();
                 toggleContactPopup();
+                logContactButtonClick();
               }}
               className="hidden lg:block px-4 py-2 rounded-md bg-[#4169E1] text-white font-medium hover:bg-blue-600 transition-colors"
             >
