@@ -37,6 +37,15 @@ export function ContactPopup({ isOpen, onClose }) {
     logContactFormSubmission("Contact Form Submit");
     setIsSubmitting(true);
     try {
+      const response = await fetch("https://novanectar.co.in/api/test-contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      console.log("api response:", result);
       toast.success("Form Submitted Successfully");
       navigate("/success");
       reset();
