@@ -35,15 +35,24 @@ export function ContactPopup({ isOpen, onClose }) {
 
   const onSubmit = async (data) => {
     logContactFormSubmission("Contact Form Submit");
+    // 🔥 Push GTM event
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "contact_form_submitted",
+      form_name: "Contact Popup Form",
+    });
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://novanectar.co.in/api/test-contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://novanectar.co.in/api/test-contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const result = await response.json();
       console.log("api response:", result);
       toast.success("Form Submitted Successfully");
